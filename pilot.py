@@ -21,7 +21,7 @@ st.sidebar.write('Object Detection pada Eksterior Mobil')
 st.sidebar.write('Model: YOLOv5')
 st.sidebar.write('I Made Atmavidya V.')
 
-st.markdown("""---------""") # separator
+st.sidebar.markdown("""---------""") # separator
 st.sidebar.write('Sample input')
 st.sidebar.image('./sample_images/0050.JPEG')
 st.sidebar.write('Sample output')
