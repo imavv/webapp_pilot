@@ -48,25 +48,25 @@ if page == "Image":
             f.write(uploaded_img.getbuffer())         
         st.success("Saved File")
 
-        # # run detect py
-        # src_vid_dir = 'uploaded_images'
-        # dest_vid_dir = 'predictions'
+        # run detect py
+        src_img_dir = 'uploaded_images'
+        dest_img_dir = 'predictions'
 
-        # venv_path = '/Users/atmavidyavirananda/Documents/Univ/Tingkat_4/Semester_8/TA_II/Code/YOLOv5/yolov5_env/bin/python'
-        # script_file = f'../YOLOv5/yolov5/detect.py --source ../car_dmg_webapp/{src_vid_dir}/{uploaded_img.name} --project ../car_dmg_webapp/{dest_vid_dir} --weights ../YOLOv5/yolov5/runs/train/yolo_car_dmg_plustf/weights/best.pt --conf 0.25 --name {uploaded_img.name}'
+        venv_path = 'python'
+        script_file = f'./yolov5/detect.py --source ./uploaded_images/0003.JPEG --project ./predictions --weights .yolov5/runs/train/yolo_car_dmg_plustf/weights/best.pt --conf 0.25 --name pilottest'
 
-        # subprocess.run(venv_path + ' ' + script_file, shell=True)
+        subprocess.run(venv_path + ' ' + script_file, shell=True)
         
-        # # prediction result
+        # prediction result
         # labeled_img_dir = f'predictions/{uploaded_img.name}' 
         # img_filename = os.listdir(labeled_img_dir)[0]
         # final_img_path = os.path.join(labeled_img_dir, img_filename)
 
-        # st.write('Result')
-        # final_image = Image.open(final_img_path)
-        # st.image(final_image,  
-        #         width=250,
-        #             )
+        st.write('Result')
+        final_image = Image.open('./predictions/pepe_placeholder.jpeg')
+        st.image(final_image,  
+                width=250,
+                    )
 
 elif page == "Video":
     # Upload video prompt
