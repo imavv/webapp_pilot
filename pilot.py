@@ -48,6 +48,9 @@ if page == "Image":
             f.write(uploaded_img.getbuffer())         
         st.success("Saved File")
 
+        # import torch??
+        subprocess.run('pip install torch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0', shell=True)
+
         # run detect py
         src_img_dir = 'uploaded_images'
         dest_img_dir = 'predictions'
