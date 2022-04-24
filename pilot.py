@@ -12,7 +12,7 @@ st.write("""
 Aplikasi browser ini dapat mendeteksi cacat pada eksterior mobil, seperti: penyok, goresan, dan retakan!""")
 
 # Show image
-image = Image.open('./car_assembly_line.jpeg')
+image = Image.open('./sample_images/car_assembly_line.jpeg')
 st.image(image, use_column_width=True)
 
 # add sidebar for aesthetics
@@ -20,6 +20,11 @@ st.sidebar.header('Prototipe Tugas Akhir')
 st.sidebar.write('Object Detection pada Eksterior Mobil')
 st.sidebar.write('Model: YOLOv5')
 st.sidebar.write('I Made Atmavidya V.')
+
+st.sidebar.write('Sample input')
+st.sidebar.image('./sample_images/0050.JPEG')
+st.sidebar.write('Sample output')
+st.sidebar.image('./sample_images/0050_pred.JPEG')
 
 # Create a page dropdown 
 page = st.selectbox("Pilih tipe input:", ["Image", "Video"]) 
@@ -36,31 +41,31 @@ if page == "Image":
                 width=250,
                 )
     
-        # os.makedirs(os.path.join("uploaded_images", uploaded_img.name), exist_ok=True)
+        os.makedirs(os.path.join("./uploaded_images", uploaded_img.name), exist_ok=True)
 
-        # with open(os.path.join("uploaded_images", uploaded_img.name, uploaded_img.name),"wb") as f: 
-        #     f.write(uploaded_img.getbuffer())         
-        # st.success("Saved File")
+        with open(os.path.join("./uploaded_images", uploaded_img.name, uploaded_img.name),"wb") as f: 
+            f.write(uploaded_img.getbuffer())         
+        st.success("Saved File")
 
-        # # run detect py
-        # src_vid_dir = 'uploaded_images'
-        # dest_vid_dir = 'predictions'
+        # run detect py
+        src_vid_dir = 'uploaded_images'
+        dest_vid_dir = 'predictions'
 
-        # venv_path = '/Users/atmavidyavirananda/Documents/Univ/Tingkat_4/Semester_8/TA_II/Code/YOLOv5/yolov5_env/bin/python'
-        # script_file = f'../YOLOv5/yolov5/detect.py --source ../car_dmg_webapp/{src_vid_dir}/{uploaded_img.name} --project ../car_dmg_webapp/{dest_vid_dir} --weights ../YOLOv5/yolov5/runs/train/yolo_car_dmg_plustf/weights/best.pt --conf 0.25 --name {uploaded_img.name}'
+        venv_path = '/Users/atmavidyavirananda/Documents/Univ/Tingkat_4/Semester_8/TA_II/Code/YOLOv5/yolov5_env/bin/python'
+        script_file = f'../YOLOv5/yolov5/detect.py --source ../car_dmg_webapp/{src_vid_dir}/{uploaded_img.name} --project ../car_dmg_webapp/{dest_vid_dir} --weights ../YOLOv5/yolov5/runs/train/yolo_car_dmg_plustf/weights/best.pt --conf 0.25 --name {uploaded_img.name}'
 
-        # subprocess.run(venv_path + ' ' + script_file, shell=True)
+        subprocess.run(venv_path + ' ' + script_file, shell=True)
         
-        # # prediction result
-        # labeled_img_dir = f'predictions/{uploaded_img.name}' 
-        # img_filename = os.listdir(labeled_img_dir)[0]
-        # final_img_path = os.path.join(labeled_img_dir, img_filename)
+        # prediction result
+        labeled_img_dir = f'predictions/{uploaded_img.name}' 
+        img_filename = os.listdir(labeled_img_dir)[0]
+        final_img_path = os.path.join(labeled_img_dir, img_filename)
 
-        # st.write('Result')
-        # final_image = Image.open(final_img_path)
-        # st.image(final_image,  
-        #         width=250,
-        #             )
+        st.write('Result')
+        final_image = Image.open(final_img_path)
+        st.image(final_image,  
+                width=250,
+                    )
 
 elif page == "Video":
     # Upload video prompt
