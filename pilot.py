@@ -49,7 +49,7 @@ if page == "Image":
         st.success("Saved File")
 
         # import torch??
-        subprocess.run('pip install torch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0 opencv-contrib-python>=4.1.2 pandas>=1.1.4', shell=True)
+        subprocess.run('pip install torch==1.7.0 torchvision==0.8.0 torchaudio==0.7.0 opencv-contrib-python>=4.1.2 pandas>=1.1.4 yaml', shell=True)
 
         # run detect py
         src_img_dir = 'uploaded_images'
